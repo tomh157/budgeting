@@ -1,0 +1,7 @@
+require "watir-webdriver" 
+
+Given /^Given I am on the modus budget app in the Budget tab$/ do 
+@browser ||= Watir::Browser.new :chrome 
+@browser.goto "google.com" 
+@browser.text_field(:name => "q").set "https://budget.modus.app/#/budget"
+end 
