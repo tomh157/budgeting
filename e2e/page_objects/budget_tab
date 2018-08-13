@@ -1,0 +1,8 @@
+class budget_tab
+include PageObjects
+
+  text_field(:description, :name = 'description')
+  text_field(:value, :name = 'value')
+  button(:add, :value => 'Add')
+end
+
