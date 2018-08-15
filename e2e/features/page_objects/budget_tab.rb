@@ -1,16 +1,24 @@
-# require 'PageObjects'
+require 'page-object'
 
 class BudgetTab
 
   def Initialize
     @browser = Watir::Browser.new :chrome
-    @PageObjects = Class::PageObject::Elements
+    @page_objects = PageObject::Elements
   end
 
-  # include PageObjects
+  include PageObject
+
+  def total_outflow
+
+  end
+
+  def working_balance
+
+  end
 
   def category_field(value)
-    @browser.select(:category, :name => 'categoryId', :value => value)
+    @page_objects.select_list(:category, :name => 'categoryId', :selected_values => value)
   end
 
   def description_field
