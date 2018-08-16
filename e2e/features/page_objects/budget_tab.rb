@@ -7,20 +7,19 @@ class BudgetPage
     @browser = browser
   end
 
-  def add_income(description)
-    select_category(15)
-    # @browser.select_list(:name => "category").set 15
+  def add_entry_to_budget(category, description, value)
+    select_category(category)
     @browser.text_field(:name => "description").set description
+    @browser.text_field(:name => "value").set value
+    @browser.button(:type => "submit").click
   end
 
   def select_category(category)
-    list_items = @browser.select_list(:name => "categoryId").click
-    puts list_items
-    list_items.each do |item|
-      if item.value == category
-        item.click
-        return
-      end
+      options_array = @browser.select_list(:name, 'categoryId').options.map(&:value)
+      @browser.select_list(:name => "categoryId").click
+      item = @browser.select_list(:name, 'categoryId').select_value(options_array[category])
+      return item
+      # return
     end
   end
 
@@ -65,5 +64,5 @@ class BudgetPage
   # def add_button
   #   @browser.button(:add, :value => 'Add')
   # end
-end
+
 
