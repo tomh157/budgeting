@@ -29,16 +29,18 @@ require_relative '../page_objects/budget_tab.rb'
   end
 
   When(/^I click the Add button$/) do
-    @browser.button(:type => "submit").click
+    @budget_page.click_add_button
   end
-  #
-  # Then(/^I expect the entry to be added to the budget$/) do
-  #   pending
-  # end
-  #
+
+  Then(/^I expect the entry to be added with the correct description and value$/) do
+    pending
+  end
+
   def create_random_description
     range = [*'0'..'9',*'A'..'Z',*'a'..'z']
     random_description = Array.new(8){range.sample}.join
     "Test + #{random_description}"
-   end
-  # end
+  end
+
+
+
