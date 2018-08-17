@@ -5,7 +5,7 @@ Feature: Testing Modus Budgeting App
     Given I am on the modus budget app in the Budget tab
     And I add an Income of $<value>
     When I click the Add button
-    Then I expect the entry to be added with the correct description and value
+    Then I expect the entry to be added with the correct details
     Examples:
       | value |
       | 100   |

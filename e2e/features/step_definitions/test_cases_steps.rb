@@ -32,8 +32,8 @@ require_relative '../page_objects/budget_tab.rb'
     @budget_page.click_add_button
   end
 
-  Then(/^I expect the entry to be added with the correct description and value$/) do
-    pending
+  Then(/^I expect the entry to be added with the correct details$/) do
+    @budget_page.return_budget_as_array
   end
 
   def create_random_description
