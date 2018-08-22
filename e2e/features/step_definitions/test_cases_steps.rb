@@ -33,13 +33,13 @@ require_relative '../page_objects/budget_tab.rb'
   end
 
   Then(/^I expect the entry to be added with the correct details$/) do
-    @budget_page.return_budget_as_array
+    @budget_page.assert_new_entry('Income', @description, '$300.00')
   end
 
   def create_random_description
     range = [*'0'..'9',*'A'..'Z',*'a'..'z']
     random_description = Array.new(8){range.sample}.join
-    "Test + #{random_description}"
+    @description = "Test + #{random_description}"
   end
 
 
