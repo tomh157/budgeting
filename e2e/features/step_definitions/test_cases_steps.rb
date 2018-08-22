@@ -2,6 +2,8 @@ require 'watir'
 require 'waitutil'
 require_relative '../page_objects/budget_tab.rb'
 
+# categories = Hash.new
+categories = {"Groceries" => 1, "School" => 2, "Entertainment" => 3, "Utensils" => 4, "Kids" => 5, "Income" => 14}
 
   # budget_page = BudgetPage.new(browser)
    # @starting_total_inflow =
@@ -17,15 +19,12 @@ require_relative '../page_objects/budget_tab.rb'
     puts @browser.url
   end
 
-  And(/^I add an Income of \$(\d+)$/) do |value|
+  And(/^I add an (.*) of (.*)$/) do |category, value|
     @budget_page = BudgetPage.new(@browser)
-    @budget_page.add_entry_to_budget(14, create_random_description, value)
+    @budget_page.add_entry_to_budget(categories[category], create_random_description, value)
     sleep (10)
-    # @starting_total_inflow = @budget_page.total_inflow
-    # puts @starting_total_inflow
-    # @budget_page
-    # @budget_page.value = value
-    # puts create_random_description
+    @category = category
+    @value = "$#{value}.00"
   end
 
   When(/^I click the Add button$/) do
@@ -33,13 +32,13 @@ require_relative '../page_objects/budget_tab.rb'
   end
 
   Then(/^I expect the entry to be added with the correct details$/) do
-    @budget_page.assert_new_entry('Income', @description, '$300.00')
+    @budget_page.assert_new_entry(@category, @description, @value)
   end
 
   def create_random_description
     range = [*'0'..'9',*'A'..'Z',*'a'..'z']
     random_description = Array.new(8){range.sample}.join
-    @description = "Test + #{random_description}"
+    @description = "Test #{random_description}"
   end
 
 

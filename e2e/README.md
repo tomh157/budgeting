@@ -3,8 +3,12 @@
 *Budget Tab*
 
 Given I am on the modus budget app in the Budget tab
-When I type any character into the description field
-Then the field should retain the values typed into it
+When I type a special character into the description field
+Then these characters should appear in the field
+
+Given I am on the modus budget app in the Budget tab
+When I type a non-numeric character into the value field
+Then the field should remain empty
 
 Given I am on the modus budget app in the Budget tab
 And I add an Income of $100

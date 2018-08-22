@@ -62,10 +62,9 @@ class BudgetPage
     puts actual_row
     expected_row.eql? actual_row
     if expected_row != actual_row
-      puts "expected results do not match actualtt results"
+      raise "expected results do not match actual results"
     end
   end
-    # if false "Expected results do not match actual"
 end
 
 # def get_table_rows
