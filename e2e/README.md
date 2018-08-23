@@ -53,20 +53,15 @@ When I go to click the Add button
 Then the Add button is disabled 
 
 Given I am on the modus budget app in the Budget tab
-When I try to type in invalid characters to the ‘Value’ field
-Then the field should remain empty
-
-Given I am on the modus budget app in the Budget tab
 And I have existing incomes and expenses in the budget
 When I delete an expense from the budget
 Then the entry no longer exists on the page
 And the Working Balance increases accordingly
 
 Given I am on the modus budget app in the Budget tab
-And I have existing incomes and expenses in the budget
 When I delete an income from the budget
 Then the entry no longer exists on the page
-And the Working Balance decreases accordingly
+And the Working Balance adjusts accordingly
 
 
 *Reporting Tab*

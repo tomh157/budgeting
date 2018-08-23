@@ -40,9 +40,6 @@ class BudgetPage
   def click_add_button
     submit_button = @browser.button(:type => "submit")
     submit_button.click
-    # if submit_button = 'disabled'
-    #   puts "Add button is disabled"
-    # end
   end
 
   def return_last_row
@@ -58,8 +55,6 @@ class BudgetPage
   def assert_new_entry(category, description, amount)
     expected_row = category + description + amount
     actual_row = return_last_row
-    puts expected_row
-    puts actual_row
     expected_row.eql? actual_row
     if expected_row != actual_row
       raise "expected results do not match actual results"
