@@ -6,6 +6,9 @@ categories = {"Groceries" => 0, "School" => 1, "Entertainment" => 2, "Utensils" 
               "Commute" => 6, "Insurace" => 7, "Clothing" => 8, "Car" => 9, "Taxes" => 10, "Health" => 11,
               "Home" => 12, "Beauty" => 13, "Income" => 14, "Misc" => 15, "Gifting" => 16,}
 
+
+@starting_balance = @budget_page.working_balance
+
 Given(/^I am on the modus budget app in the Budget tab$/) do
   @browser = Watir::Browser.new :chrome
   @browser.goto "https://budget.modus.app/#/budget"
@@ -13,7 +16,13 @@ Given(/^I am on the modus budget app in the Budget tab$/) do
   @budget_page = BudgetPage.new(@browser)
 end
 
-And(/^I add an (.*) of (.*)$/) do |category, value|
+And(/^I add an Income of (.*)/) do |value|
+  @budget_page.add_entry_to_budget(categories['Income'], create_random_description, value)
+  @category = 'Income'
+  @value = "$#{value}.00"
+end
+
+And(/^I add a (.*) Expense of (.*)$/) do |category, value|
   @budget_page.add_entry_to_budget(categories[category], create_random_description, value)
   sleep (10)
   @category = category
@@ -32,29 +41,19 @@ When(/^I type a non-numeric (.*) into the value field$/) do |characters|
   @budget_page.value_field.send_keys(characters)
 end
 
-
-Then(/^the field should remain empty$/) do
-  # if @budget_page.value_field != nil?
-  if @budget_page.value_field != 'Value'
-    sleep(10)
-    raise "expected field to be empty but it is not"
+And(/^the Add button is disabled$/) do
+  # add_button = @budget_page.add_button
+  # assert.add_button == disabled?
+  if  @budget_page.add_button.enabled?
+    raise "Add button is not disabled"
   end
 end
 
-
-And(/^the Add button is disabled$/) do
-  pending
-end
-
-When(/^I delete an entry from the budget$/) do
+When(/^I delete the entry from the budget$/) do
   pending
 end
 
 Then(/^the entry no longer exists on the page$/) do
-  pending
-end
-
-And(/^the Working Balance adjusts accordingly$/) do
   pending
 end
 

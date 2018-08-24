@@ -2,8 +2,35 @@
 
 *Budget Tab*
 
+AUTOMATED TEST CASES
+
+Scenario: Testing that adding an income to budget works correctly
+  Given I am on the modus budget app in the Budget tab
+  And I add an Income of 100
+  When I click the Add button
+  Then I expect the entry to be added with the correct details
+
+Scenario Outline: Test validation in Value field
+  Given I am on the modus budget app in the Budget tab
+  When I type a non-numeric <characters> into the value field
+  Then the Add button is disabled
+      Examples:
+        |characters|
+        |@!$£     |
+        |AbYz     |
+        |123      |
+*This test will fail in the third example with a useful error message 'Add button is not disabled' because the numeric characters enable the Add button*
+
+Scenario: Test deleting an expense from the budget
+  Given I am on the modus budget app in the Budget tab
+  And  I add an Expense of 100
+  When I delete the entry from the budget
+  Then the entry no longer exists on the page
+
+MANUAL TEST CASES
+
 Given I am on the modus budget app in the Budget tab
-When I type a special character into the description field
+When I type a non-alphanumeric character into the description field
 Then these characters should appear in the field
 
 Given I am on the modus budget app in the Budget tab

@@ -25,6 +25,10 @@ class BudgetPage
     page.at('table')
   end
 
+  def working_balance
+    budget_table.xpath('//*[@id="root"]/main/section/div/div/div[5]/div/div[1]')
+  end
+
   def add_entry_to_budget(category, description, value)
     select_category(category)
     description_field.set description
@@ -37,10 +41,24 @@ class BudgetPage
     category_dropdown.select_value(options_array[category])
   end
 
-  def click_add_button
-    submit_button = @browser.button(:type => "submit")
-    submit_button.click
+  def add_button
+    @browser.button(:type => "submit")
   end
+
+  def click_add_button
+    add_button.click
+  end
+
+  # def return_field_value
+  #    value_field = budget_table.xpath('//*[@id="root"]/main/section/table/tfoot/tr/td/form/div[3]/input')
+  #    # value_in_field = value_field.xpath(:value)
+  #    # value_in_field = budget_table.at('input')['value']
+  #    value_in_field = value_field.at('value')
+  #
+  #    puts value_in_field
+  #
+  #   # budget_table.(field)
+  # end
 
   def return_last_row
     last_row = budget_table.xpath('//*/table/tbody/tr')[-1]
@@ -55,7 +73,7 @@ class BudgetPage
   def assert_new_entry(category, description, amount)
     expected_row = category + description + amount
     actual_row = return_last_row
-    expected_row.eql? actual_row
+    # expected_row.eql? actual_row
     if expected_row != actual_row
       raise "expected results do not match actual results"
     end
