@@ -15,6 +15,6 @@ class CatalogPage
   end
 
   def purchase_book(name = 'Pragmatic Project Automation')
-    @browser.button(:value => "Add to Cart", :index => BOOK_MAPPING[name]).click
+    @browser.button(:amount => "Add to Cart", :index => BOOK_MAPPING[name]).click
   end
 end

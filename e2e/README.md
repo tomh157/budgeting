@@ -1,3 +1,9 @@
+Instructions:
+
+Clone repo from github
+cd into folder and run 'bundle install'
+
+
 **Test Plan for Budgeting App**
 
 *Budget Tab*
@@ -19,13 +25,16 @@ Scenario Outline: Test validation in Value field
         |@!$£     |
         |AbYz     |
         |123      |
-*This test will fail in the third example with a useful error message 'Add button is not disabled' because the numeric characters enable the Add button*
+*This test will fail in the third example with a useful error message 'Add button is not disabled'. This way we also test that the numeric characters enable the Add button*
 
-Scenario: Test deleting an expense from the budget
-  Given I am on the modus budget app in the Budget tab
-  And  I add an Expense of 100
-  When I delete the entry from the budget
-  Then the entry no longer exists on the page
+Given I am on the modus budget app in the Budget tab
+And I add an Expense(anything other than income)of $100
+When I click the Add button
+Then I expect the entry to be added to the budget
+And the total outflow in Red to increase by $100
+And the working balance to decrease by $100 
+*
+
 
 MANUAL TEST CASES
 

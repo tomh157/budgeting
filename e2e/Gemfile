@@ -6,6 +6,7 @@ source "https://rubygems.org"
 
 # gem "rails"
 
+gem 'assert'
 gem 'cucumber'
 gem 'nokogiri'
 gem 'page-object'
