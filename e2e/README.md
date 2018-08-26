@@ -1,8 +1,8 @@
 **Instructions:**
 
 Clone repo from github
-cd into budgeting > e2e folder and run 'bundle install'
-run test using -- bundle exec cucumber
+cd into budgeting > e2e folder and run using -- 'bundle install'
+run test using -- rake 'budget_tab'
 
 
 **Test Plan for Budgeting App**
