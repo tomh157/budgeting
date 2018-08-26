@@ -34,7 +34,7 @@ Given I am on the modus budget app in the Budget tab
 And I add an Expense(anything other than income)of $100
 When I click the Add button
 Then I expect the entry to be added to the budget
-And the total outflowto increase 
+And the total outflow to increase 
 And the working balance to decrease
 
 
