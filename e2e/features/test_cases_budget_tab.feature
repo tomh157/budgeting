@@ -1,4 +1,4 @@
-@@budget_tab
+@budget_tab
 Feature: Testing Budget Tab for Modus
 
   Background:

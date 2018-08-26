@@ -1,0 +1,8 @@
+require 'rubygems'
+require 'rake/testtask'
+require 'cucumber'
+require 'cucumber/rake/task'
+
+Cucumber::Rake::Task.new(:budget_tab) do |t|
+  t.profile = 'budget_tab'
+end

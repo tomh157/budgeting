@@ -2,7 +2,7 @@ require 'assert'
 require 'rubygems'
 require 'watir'
 require 'waitutil'
-require_relative '../page_objects/budget_tab.rb'
+require_relative '../pages/budget_tab.rb'
 
 categories = {"Groceries" => 0, "School" => 1, "Entertainment" => 2, "Utensils" => 3, "Kids" => 4, "Travel" => 5,
               "Commute" => 6, "Insurace" => 7, "Clothing" => 8, "Car" => 9, "Taxes" => 10, "Health" => 11,
