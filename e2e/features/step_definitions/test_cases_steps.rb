@@ -1,4 +1,5 @@
 require 'assert'
+require 'rubygems'
 require 'watir'
 require 'waitutil'
 require_relative '../page_objects/budget_tab.rb'

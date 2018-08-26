@@ -1,7 +1,8 @@
-Instructions:
+**Instructions:**
 
 Clone repo from github
-cd into folder and run 'bundle install'
+cd into budgeting > e2e folder and run 'bundle install'
+run test using -- bundle exec cucumber
 
 
 **Test Plan for Budgeting App**
@@ -15,6 +16,8 @@ Scenario: Testing that adding an income to budget works correctly
   And I add an Income of 100
   When I click the Add button
   Then I expect the entry to be added with the correct details
+  And I expect the total inflow to increase
+  And the working balance should increase
 
 Scenario Outline: Test validation in Value field
   Given I am on the modus budget app in the Budget tab
@@ -31,9 +34,9 @@ Given I am on the modus budget app in the Budget tab
 And I add an Expense(anything other than income)of $100
 When I click the Add button
 Then I expect the entry to be added to the budget
-And the total outflow in Red to increase by $100
-And the working balance to decrease by $100 
-*
+And the total outflowto increase 
+And the working balance to decrease
+
 
 
 MANUAL TEST CASES

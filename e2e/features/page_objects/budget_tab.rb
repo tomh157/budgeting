@@ -1,5 +1,7 @@
+require 'assert'
 require 'nokogiri'
 require 'page-object'
+require 'rubygems'
 require 'watir'
 
 class BudgetPage
